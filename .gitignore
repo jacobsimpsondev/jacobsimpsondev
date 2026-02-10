@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+
+# Sass caches
+.sass-cache/
+.cache/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Env files
+.env
+.env.*
