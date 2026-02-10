@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Coming Soon · Jacob Simpson</title>
+		<meta
+			name="description"
+			content="Coming soon page for Jacob Simpson's GitHub profile site."
+		/>
+		<style>
+			:root {
+				color-scheme: light dark;
+				--bg: #0f1115;
+				--card: #151922;
+				--text: #f5f7fb;
+				--muted: #9aa3b2;
+				--accent: #7aa2ff;
+				--ring: rgba(122, 162, 255, 0.35);
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				min-height: 100vh;
+				display: grid;
+				place-items: center;
+				background: radial-gradient(
+						1200px 600px at 80% -20%,
+						rgba(122, 162, 255, 0.18),
+						transparent
+					),
+					var(--bg);
+				color: var(--text);
+				font-family: "Inter", "SF Pro Text", "Segoe UI", system-ui, -apple-system,
+					sans-serif;
+				line-height: 1.5;
+				padding: 32px 16px;
+			}
+
+			main {
+				width: min(560px, 100%);
+			}
+
+			.card {
+				background: var(--card);
+				border: 1px solid rgba(255, 255, 255, 0.06);
+				border-radius: 24px;
+				padding: 40px 32px;
+				box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+				text-align: center;
+			}
+
+			.avatar {
+				width: 120px;
+				height: 120px;
+				border-radius: 999px;
+				object-fit: cover;
+				border: 3px solid var(--card);
+				box-shadow: 0 0 0 6px var(--ring);
+				background: #1e2430;
+			}
+
+			h1 {
+				font-size: clamp(2rem, 3vw, 2.5rem);
+				margin-top: 20px;
+				letter-spacing: -0.02em;
+			}
+
+			.subtitle {
+				margin-top: 6px;
+				color: var(--muted);
+				font-size: 0.95rem;
+			}
+
+			.message {
+				margin: 20px auto 0;
+				color: var(--text);
+				font-size: 1.05rem;
+				max-width: 40ch;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				margin-top: 24px;
+				padding: 6px 14px;
+				border-radius: 999px;
+				background: rgba(122, 162, 255, 0.12);
+				color: var(--accent);
+				font-size: 0.85rem;
+				letter-spacing: 0.02em;
+			}
+
+			.dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 999px;
+				background: var(--accent);
+				box-shadow: 0 0 12px rgba(122, 162, 255, 0.7);
+			}
+
+			@media (prefers-color-scheme: light) {
+				:root {
+					--bg: #f6f7fb;
+					--card: #ffffff;
+					--text: #1b1f2a;
+					--muted: #5a6372;
+					--accent: #3f6df6;
+					--ring: rgba(63, 109, 246, 0.2);
+				}
+
+				body {
+					background: radial-gradient(
+							1200px 600px at 80% -20%,
+							rgba(63, 109, 246, 0.18),
+							transparent
+						),
+						var(--bg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<section class="card" aria-label="Coming soon">
+				<img
+					class="avatar"
+					src="https://placehold.co/240x240/png"
+					alt="Profile portrait placeholder"
+				/>
+				<h1>Jacob Simpson</h1>
+				<p class="subtitle">GitHub Profile Site · Coming Soon</p>
+				<p class="message">
+					This site is under construction and will be my first project built
+					with an AI-powered workflow. Stay tuned for updates.
+				</p>
+				<div class="badge" aria-hidden="true">
+					<span class="dot"></span>
+					Building with AI
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
