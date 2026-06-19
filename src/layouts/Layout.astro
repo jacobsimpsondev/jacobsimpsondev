@@ -10,6 +10,12 @@ const {
   title = 'Jacob Simpson — Freelance Astro & WordPress Developer',
   description = "Jacob Simpson — freelance developer building fast, modern sites with Astro & WordPress. Clean code, great Core Web Vitals, shipped on time.",
 } = Astro.props;
+
+// Absolute URLs for social cards. Resolving an absolute path against Astro.site
+// is base-path-safe regardless of trailing slashes.
+const basePath = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const canonicalURL = new URL(basePath, Astro.site);
+const ogImageURL = new URL(basePath + 'og-image.png', Astro.site);
 ---
 
 <!doctype html>
@@ -20,10 +26,28 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <meta
       name="ahrefs-site-verification"
       content="32d53a595ce533c7faa107060e66fdb2e03ab630b591f129785876929ae03dc6"
     />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jacob Simpson" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Jacob Simpson — freelance Astro & WordPress developer" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
