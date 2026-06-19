@@ -1,0 +1,91 @@
+---
+const services = [
+  {
+    num: '01',
+    title: 'WordPress Builds',
+    body: 'Custom themes & plugins, ACF, WooCommerce, and clean editor experiences your client will actually enjoy.',
+  },
+  {
+    num: '02',
+    title: 'Astro Websites',
+    body: 'Lightning-fast static & hybrid sites with content collections, islands, and near-perfect Lighthouse scores.',
+  },
+  {
+    num: '03',
+    title: 'Migrations & Speed',
+    body: 'Move legacy WordPress to headless or Astro, fix Core Web Vitals, and tighten on-page SEO.',
+  },
+  {
+    num: '04',
+    title: 'Care & Maintenance',
+    body: 'Ongoing updates, security hardening, backups, and small feature work to keep things running.',
+  },
+];
+---
+
+<section id="services" class="services">
+  <div class="container">
+    <div class="eyebrow">// services</div>
+    <h2 class="section-title">How I can help</h2>
+    <div class="grid">
+      {
+        services.map((svc) => (
+          <div class="service">
+            <div class="service__num mono">[ {svc.num} ]</div>
+            <h3 class="service__title">{svc.title}</h3>
+            <p class="service__body">{svc.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    border-top: 1px solid var(--border-band);
+    border-bottom: 1px solid var(--border-band);
+    background: var(--band-bg);
+    padding: 88px 32px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+
+  .service {
+    background: var(--card-bg);
+    border: 1px solid var(--border-card);
+    border-radius: 13px;
+    padding: 28px;
+    transition: border-color 0.18s, transform 0.18s;
+  }
+
+  .service:hover {
+    border-color: #244332;
+    transform: translateY(-3px);
+  }
+
+  .service__num {
+    font-size: 13px;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .service__title {
+    margin: 0 0 9px;
+    font-size: 18.5px;
+    font-weight: 600;
+    color: var(--heading-alt);
+  }
+
+  .service__body {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--body);
+    font-weight: 300;
+  }
+</style>

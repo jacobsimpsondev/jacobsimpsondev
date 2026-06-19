@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import TechStack from '../components/TechStack.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+// Design toggles (from the handoff spec). Flip these to change the page.
+const enableTypewriter = true; // false → show a static "Freelance Developer"
+const showBackgroundGrid = true; // toggles the hero grid overlay
+const availableForWork = true; // false → badge reads "currently booked"
+---
+
+<Layout>
+  <Nav />
+  <Hero
+    enableTypewriter={enableTypewriter}
+    showBackgroundGrid={showBackgroundGrid}
+    availableForWork={availableForWork}
+  />
+  <TechStack />
+  <Services />
+  <Contact />
+  <Footer />
+</Layout>

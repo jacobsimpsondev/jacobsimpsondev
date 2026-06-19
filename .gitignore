@@ -1,9 +1,21 @@
+# build output
+dist/
+.output/
+
+# dependencies
+node_modules/
+
+# generated types
+.astro/
+
 # OS
 .DS_Store
 
-# Sass caches
-.sass-cache/
-.cache/
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Editor settings
 .vscode/
@@ -12,3 +24,4 @@
 # Env files
 .env
 .env.*
+!.env.example

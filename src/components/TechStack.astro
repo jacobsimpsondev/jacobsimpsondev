@@ -1,0 +1,135 @@
+---
+const chips = [
+  'PHP',
+  'JavaScript',
+  'TypeScript',
+  'HTML & CSS',
+  'Tailwind',
+  'MySQL',
+  'Git',
+  'REST / GraphQL',
+];
+---
+
+<section id="skills" class="skills container">
+  <div class="eyebrow">// tech stack</div>
+  <h2 class="section-title">Tools I build with</h2>
+
+  <div class="headliners">
+    <div class="card card--astro">
+      <div class="card__meta">
+        <span class="tag tag--astro mono">astro</span>
+        <span class="card__label mono">front-end</span>
+      </div>
+      <h3 class="card__title">Astro Development</h3>
+      <p class="card__body">
+        Content-driven static &amp; hybrid sites, content collections, islands,
+        and zero-JS-by-default speed.
+      </p>
+    </div>
+
+    <div class="card card--wp">
+      <div class="card__meta">
+        <span class="tag tag--wp mono">wordpress</span>
+        <span class="card__label mono">cms</span>
+      </div>
+      <h3 class="card__title">WordPress Development</h3>
+      <p class="card__body">
+        Custom themes, plugins, ACF-powered editing, WooCommerce, and headless
+        WP back-ends.
+      </p>
+    </div>
+  </div>
+
+  <div class="chips">
+    {chips.map((chip) => <span class="chip mono">{chip}</span>)}
+  </div>
+</section>
+
+<style>
+  .skills {
+    padding: 84px 32px;
+  }
+
+  .headliners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-bottom: 26px;
+  }
+
+  .card {
+    flex: 1 1 340px;
+    min-width: 300px;
+    border-radius: 14px;
+    padding: 30px;
+  }
+
+  .card--astro {
+    background: linear-gradient(135deg, #13100c, #0b0e13);
+    border: 1px solid #2a1f15;
+  }
+
+  .card--wp {
+    background: linear-gradient(135deg, #0a1118, #0b0e13);
+    border: 1px solid #15293a;
+  }
+
+  .card__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .tag {
+    font-size: 13px;
+    border-radius: 6px;
+    padding: 3px 9px;
+  }
+
+  .tag--astro {
+    color: var(--astro);
+    border: 1px solid #4a2c18;
+  }
+
+  .tag--wp {
+    color: var(--wordpress);
+    border: 1px solid #1b3c52;
+  }
+
+  .card__label {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  .card__title {
+    margin: 0 0 8px;
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .card__body {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--body);
+    font-weight: 300;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    font-size: 13px;
+    color: #9aa6b5;
+    background: #0c1219;
+    border: 1px solid #1a2533;
+    border-radius: 7px;
+    padding: 8px 14px;
+  }
+</style>

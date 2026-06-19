@@ -1,0 +1,71 @@
+---
+const email = 'jacobsimpsondev@gmail.com';
+const githubUrl = 'https://github.com/jacobsimpsondev';
+---
+
+<section id="contact" class="contact">
+  <div class="terminal">
+    <div class="terminal__bar">
+      <div class="terminal__lights">
+        <span style="background:var(--tl-red);"></span>
+        <span style="background:var(--tl-yellow);"></span>
+        <span style="background:var(--tl-green);"></span>
+      </div>
+      <span class="terminal__label">contact — bash</span>
+    </div>
+    <div class="contact__body mono">
+      <div class="contact__lines">
+        <div><span class="prompt">$</span> ./hire-jacob.sh</div>
+        <div class="contact__msg">
+          &gt; Got a project in mind? Let's build something fast.
+        </div>
+      </div>
+      <div class="contact__cta">
+        <a href={`mailto:${email}`} class="btn-primary contact__btn">{email}</a>
+        <a href={githubUrl} target="_blank" rel="noopener" class="btn-secondary contact__btn">
+          github.com/jacobsimpsondev ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 100px 32px 90px;
+  }
+
+  /* Contact terminal has a slightly deeper shadow than the shared chrome. */
+  .contact .terminal {
+    border-radius: 14px;
+    box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.7);
+  }
+
+  .contact__body {
+    padding: 34px 34px 38px;
+  }
+
+  .contact__lines {
+    font-size: 13.5px;
+    color: var(--terminal-base);
+    line-height: 1.9;
+  }
+
+  .contact__msg {
+    color: var(--green-bright);
+  }
+
+  .contact__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 26px;
+  }
+
+  /* Contact buttons use 14px text per the spec (hero uses 14.5px). */
+  .contact__btn {
+    font-size: 14px;
+  }
+</style>

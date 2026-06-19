@@ -1,0 +1,171 @@
+---
+import HeroTerminal from './HeroTerminal.astro';
+
+interface Props {
+  enableTypewriter?: boolean;
+  showBackgroundGrid?: boolean;
+  availableForWork?: boolean;
+}
+
+const {
+  enableTypewriter = true,
+  showBackgroundGrid = true,
+  availableForWork = true,
+} = Astro.props;
+
+const availLabel = availableForWork ? 'available for work' : 'currently booked';
+const githubUrl = 'https://github.com/jacobsimpsondev';
+const email = 'jacobsimpsondev@gmail.com';
+---
+
+<section id="top" class="hero">
+  {showBackgroundGrid && <div class="hero__grid" aria-hidden="true" />}
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="hero__inner container">
+    <div class="hero__col">
+      <div class="badge mono">
+        <span class="badge__dot"></span>
+        {availLabel}
+      </div>
+      <h1 class="hero__h1">
+        Freelance developer building fast, modern sites with <span
+          class="astro">Astro</span
+        > &amp; <span class="wordpress">WordPress</span>.
+      </h1>
+      <p class="hero__sub">
+        I'm Jacob — I design and build performant websites, from headless Astro
+        front-ends to fully custom WordPress. Clean code, great Core Web Vitals,
+        shipped on time.
+      </p>
+      <div class="hero__cta">
+        <a href={`mailto:${email}`} class="btn-primary">
+          <span class="dollar">$</span> hire me
+        </a>
+        <a href={githubUrl} target="_blank" rel="noopener" class="btn-secondary">
+          view github ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__col hero__col--terminal">
+      <HeroTerminal enableTypewriter={enableTypewriter} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 104px 32px 128px;
+  }
+
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(#0e1822 1px, transparent 1px),
+      linear-gradient(90deg, #0e1822 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      #000 40%,
+      transparent 100%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      #000 40%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero__glow {
+    position: absolute;
+    top: -120px;
+    left: 18%;
+    width: 560px;
+    height: 560px;
+    background: radial-gradient(
+      circle,
+      rgba(63, 185, 80, 0.13),
+      transparent 65%
+    );
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hero__col {
+    flex: 1 1 440px;
+    min-width: 320px;
+  }
+
+  .hero__col--terminal {
+    flex: 1 1 400px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 13px;
+    border: 1px solid #1c3a23;
+    background: rgba(63, 185, 80, 0.07);
+    border-radius: 100px;
+    font-size: 12.5px;
+    color: var(--green-bright);
+    margin-bottom: 26px;
+  }
+
+  .badge__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px rgba(63, 185, 80, 0.8);
+  }
+
+  .hero__h1 {
+    margin: 0;
+    font-size: clamp(38px, 5.2vw, 62px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .astro {
+    color: var(--astro);
+  }
+
+  .wordpress {
+    color: var(--wordpress);
+  }
+
+  .hero__sub {
+    margin: 26px 0 0;
+    max-width: 520px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--body);
+    font-weight: 300;
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .dollar {
+    color: var(--green-ink-dim);
+  }
+</style>

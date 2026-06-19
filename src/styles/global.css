@@ -1,0 +1,176 @@
+:root {
+  /* Surfaces */
+  --bg: #080b11;
+  --band-bg: #0a0f17;
+  --card-bg: #0b121b;
+  --terminal-bg: #0a111b;
+  --panel: #0d1722;
+
+  /* Borders */
+  --border-nav: #141d28;
+  --border-band: #111a24;
+  --border-card: #18222e;
+  --border-terminal: #1b2836;
+  --border-titlebar: #18242f;
+  --border-outline: #25303d;
+
+  /* Text */
+  --heading: #f0f4f8;
+  --heading-alt: #eef2f6;
+  --body: #8a96a6;
+  --nav-text: #c9d4e0;
+  --muted: #6b7785;
+  --muted-dim: #5c6878;
+  --terminal-base: #c2cdda;
+
+  /* Accents */
+  --green: #3fb950;
+  --green-bright: #56d364;
+  --green-ink: #04150a;
+  --green-ink-dim: #0a3318;
+  --astro: #ff7a3d;
+  --wordpress: #4aa3df;
+
+  /* Terminal syntax */
+  --syntax-key: #79c0ff;
+  --syntax-string: #a5d6ff;
+  --syntax-punct: #7c8a9b;
+
+  /* Traffic lights */
+  --tl-red: #ff5f56;
+  --tl-yellow: #ffbd2e;
+  --tl-green: #27c93f;
+
+  --maxw: 1180px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #d7dee8;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::selection {
+  background: rgba(63, 185, 80, 0.28);
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* Shared eyebrow + section heading */
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  color: var(--green);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  margin: 0 0 44px;
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--heading-alt);
+}
+
+/* Shared button styles (hero + contact) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 22px;
+  background: var(--green);
+  color: var(--green-ink);
+  border-radius: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14.5px;
+  font-weight: 600;
+  box-shadow: 0 6px 24px rgba(63, 185, 80, 0.22);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(63, 185, 80, 0.32);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 22px;
+  border: 1px solid var(--border-outline);
+  color: var(--nav-text);
+  border-radius: 9px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14.5px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: #3a4655;
+  background: #0d141e;
+}
+
+/* Reusable terminal chrome (hero + contact) */
+.terminal {
+  background: var(--terminal-bg);
+  border: 1px solid var(--border-terminal);
+  border-radius: 13px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border-titlebar);
+}
+
+.terminal__lights {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal__lights span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal__label {
+  flex: 1;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--muted-dim);
+}
+
+.prompt {
+  color: var(--green);
+}

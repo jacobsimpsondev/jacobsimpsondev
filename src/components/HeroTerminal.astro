@@ -1,0 +1,149 @@
+---
+interface Props {
+  enableTypewriter?: boolean;
+  roles?: string[];
+}
+
+const {
+  enableTypewriter = true,
+  roles = ['Astro Developer', 'WordPress Developer', 'Freelance Developer'],
+} = Astro.props;
+
+// When the typewriter is off, show the last (static) role.
+const initialText = enableTypewriter ? '' : roles[roles.length - 1];
+---
+
+<div class="terminal">
+  <div class="terminal__bar">
+    <div class="terminal__lights">
+      <span style="background:var(--tl-red);"></span>
+      <span style="background:var(--tl-yellow);"></span>
+      <span style="background:var(--tl-green);"></span>
+    </div>
+    <span class="terminal__label">jacob@portfolio — zsh</span>
+  </div>
+  <div class="terminal__body mono">
+    <div><span class="prompt">$</span> whoami</div>
+    <div class="out">jacob_simpson</div>
+    <div class="spaced"><span class="prompt">$</span> cat profile.json</div>
+    <div class="punct">&lbrace;</div>
+    <div class="punct indent">
+      <span class="key">"name"</span>: <span class="str">"Jacob Simpson"</span>,
+    </div>
+    <div class="punct indent">
+      <span class="key">"role"</span>: <span class="str">"Freelance Developer"</span>,
+    </div>
+    <div class="punct indent">
+      <span class="key">"stack"</span>: [<span class="str">"Astro"</span>, <span
+        class="str">"WordPress"</span>]
+    </div>
+    <div class="punct indent">
+      <span class="key">"status"</span>: <span class="status-open">"open"</span>
+    </div>
+    <div class="punct">&rbrace;</div>
+    <div class="spaced"><span class="prompt">$</span> ./role --watch</div>
+    <div>
+      <span class="caret">&gt;</span>
+      <span
+        class="typed"
+        data-typewriter
+        data-enabled={String(enableTypewriter)}
+        data-roles={JSON.stringify(roles)}>{initialText}</span
+      ><span class="cursor"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Hero terminal typewriter island. Reads config from data-* attributes so the
+  // toggle/roles set in the page frontmatter drive behavior at runtime.
+  const el = document.querySelector<HTMLElement>('[data-typewriter]');
+
+  if (el && el.dataset.enabled === 'true') {
+    const roles: string[] = JSON.parse(el.dataset.roles || '[]');
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const tick = () => {
+      const word = roles[roleIndex] ?? '';
+
+      if (!deleting) {
+        charIndex++;
+        if (charIndex > word.length) {
+          el.textContent = word;
+          // Hold the completed word, then start deleting.
+          window.setTimeout(() => {
+            deleting = true;
+            tick();
+          }, 1500);
+          return;
+        }
+      } else {
+        charIndex--;
+        if (charIndex < 0) {
+          roleIndex = (roleIndex + 1) % roles.length;
+          charIndex = 0;
+          deleting = false;
+        }
+      }
+
+      el.textContent = word.slice(0, Math.max(0, charIndex));
+      window.setTimeout(tick, deleting ? 45 : 95);
+    };
+
+    tick();
+  }
+</script>
+
+<style>
+  .terminal__body {
+    padding: 22px 22px 26px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--terminal-base);
+  }
+
+  .out {
+    color: var(--syntax-punct);
+  }
+
+  .spaced {
+    margin-top: 12px;
+  }
+
+  .punct {
+    color: var(--syntax-punct);
+  }
+
+  .indent {
+    padding-left: 18px;
+  }
+
+  .key {
+    color: var(--syntax-key);
+  }
+
+  .str {
+    color: var(--syntax-string);
+  }
+
+  .status-open {
+    color: var(--green-bright);
+  }
+
+  .caret,
+  .typed {
+    color: var(--green-bright);
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 17px;
+    background: var(--green-bright);
+    margin-left: 3px;
+    transform: translateY(3px);
+  }
+</style>
